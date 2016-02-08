@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsp/jstl/fmt" version="2.0">
+	<jsp:directive.page contentType="text/html; charset=UTF-8"
+		pageEncoding="UTF-8" session="false" />
+	<jsp:output doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+		omit-xml-declaration="true" />
+	<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<link rel="StyleSheet"
+	href="${pageContext.request.contextPath}/res/mc.css" type="text/css"
+	title="cse4413" media="screen, print" />
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/res/mc.js">
+	;
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Student Loan Calculator</title>
+</head>
+<body>
+	<form onsubmit="return validate();" action="" method="post">
+		<fieldset>
+			<table>
+				<legend>
+					Student Loan Calculator
+
+					<c:if test="${fixed eq true}">
+						[ ${letter} ]
+					</c:if>
+				</legend>
+
+
+				<!-- Principle Value -->
+				<c:if test="${fixed eq false}">
+					<tr>
+						<td><label for="principle">Principle<br />(total
+								loan amount after studies)
+						</label></td>
+						<td><input id="principle" type="number" step="any"
+							name="principle" /></td>
+					</tr>
+				</c:if>
+				<c:if test="${fixed eq true}">
+					<tr>
+						<td><label for="principle">Principle<br />(total
+								loan amount)
+						</label></td>
+						<td><input id="principle" type="number" step="any"
+							name="principle" /></td>
+					</tr>
+				</c:if>
+
+				<!-- Interest rates -->
+				<c:if test="${fixed eq false}">
+					<tr>
+						<td><label for="interest">Interest</label></td>
+						<td><input id="interest" type="number" step="any"
+							name="interest" value="${r}" /></td>
+					</tr>
+				</c:if>
+				<c:if test="${fixed eq true}">
+					<tr>
+						<td><label for="interest">Interest<br />(per year)
+						</label></td>
+						<td><input type="radio" id="interest" name="interest"
+							value="4.5" /> 4.5 <input type="radio" id="interest"
+							name="interest" value="5.5" /> 5.5 <input type="radio"
+							id="interest" name="interest" value="6.5" /> 6.5</td>
+					</tr>
+				</c:if>
+
+
+
+
+
+
+
+
+
+
+				<c:if test="${fixed eq false}">
+					<tr>
+						<td><label for="period">Payment Period<br />(total
+								number of months)
+						</label></td>
+						<td><input type="number" step="any" name="period" /></td>
+					</tr>
+				</c:if>
+
+
+				<c:if test="${fixed eq false}">
+					<tr>
+						<td><label for="grace">Grace Period<br />(take
+								advantage of 6 month grace period and include grace period
+								interest with your loan balance)
+						</label></td>
+						<td><input type="checkbox" name="grace" /></td>
+					</tr>
+				</c:if>
+
+
+
+
+			</table>
+			<input type="submit" value="Submit" />
+		</fieldset>
+
+	</form>
+</body>
+	</html>
+</jsp:root>
